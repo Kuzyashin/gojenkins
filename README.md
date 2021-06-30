@@ -1,8 +1,8 @@
 # Jenkins API Client for Go
 
-[![GoDoc](https://godoc.org/github.com/bndr/gojenkins?status.svg)](https://godoc.org/github.com/bndr/gojenkins)
-[![Go Report Cart](https://goreportcard.com/badge/github.com/bndr/gojenkins)](https://goreportcard.com/report/github.com/bndr/gojenkins)
-[![Build Status](https://travis-ci.org/bndr/gojenkins.svg?branch=master)](https://travis-ci.org/bndr/gojenkins)
+[![GoDoc](https://godoc.org/github.com/Kuzyashin/gojenkins?status.svg)](https://godoc.org/github.com/Kuzyashin/gojenkins)
+[![Go Report Cart](https://goreportcard.com/badge/github.com/Kuzyashin/gojenkins)](https://goreportcard.com/report/github.com/Kuzyashin/gojenkins)
+[![Build Status](https://travis-ci.org/Kuzyashin/gojenkins.svg?branch=master)](https://travis-ci.org/Kuzyashin/gojenkins)
 
 ## About
 
@@ -20,14 +20,14 @@ These are some of the features that are currently implemented:
 
 ## Installation
 
-    go get github.com/bndr/gojenkins
+    go get github.com/Kuzyashin/gojenkins
 
 ## Usage
 
 ```go
 
 import (
-  "github.com/bndr/gojenkins"
+  "github.com/Kuzyashin/gojenkins"
   "context"
   "time"
   "fmt"
@@ -65,13 +65,13 @@ fmt.Printf("build number %d with result: %v\n", build.GetBuildNumber(), build.Ge
 
 ```
 
-API Reference: https://godoc.org/github.com/bndr/gojenkins
+API Reference: https://godoc.org/github.com/Kuzyashin/gojenkins
 
 ## Examples
 
 For all of the examples below first create a jenkins object
 ```go
-import "github.com/bndr/gojenkins"
+import "github.com/Kuzyashin/gojenkins"
 
 jenkins, _ := gojenkins.CreateJenkins(nil, "http://localhost:8080/", "admin", "admin").Init(ctx)
 ```
