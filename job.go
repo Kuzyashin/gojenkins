@@ -420,14 +420,15 @@ func (j *Job) HasQueuedBuild() {
 }
 
 func (j *Job) InvokeSimple(ctx context.Context, params map[string]string) (int64, error) {
-	isQueued, err := j.IsQueued(ctx)
-	if err != nil {
-		return 0, err
-	}
-	if isQueued {
-		Error.Printf("%s is already running", j.GetName())
-		return 0, nil
-	}
+	// Allow concurrent builds 
+	//isQueued, err := j.IsQueued(ctx)
+	//if err != nil {
+	//	return 0, err
+	//}
+	//if isQueued {
+	//	Error.Printf("%s is already running", j.GetName())
+	//	return 0, nil
+	//}
 
 	endpoint := "/build"
 	parameters, err := j.GetParameters(ctx)
