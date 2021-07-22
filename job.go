@@ -49,9 +49,10 @@ type ParameterDefinition struct {
 		Name  string      `json:"name"`
 		Value interface{} `json:"value"`
 	} `json:"defaultParameterValue"`
-	Description string `json:"description"`
-	Name        string `json:"name"`
-	Type        string `json:"type"`
+	Description string   `json:"description"`
+	Name        string   `json:"name"`
+	Type        string   `json:"type"`
+	Choices     []string `json:"choices,omitempty"`
 }
 
 type JobResponse struct {
@@ -420,7 +421,8 @@ func (j *Job) HasQueuedBuild() {
 }
 
 func (j *Job) InvokeSimple(ctx context.Context, params map[string]string) (int64, error) {
-	// Allow concurrent builds 
+	// Allow concurrent builds
+	// Can try this
 	//isQueued, err := j.IsQueued(ctx)
 	//if err != nil {
 	//	return 0, err
