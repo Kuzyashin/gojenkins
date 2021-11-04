@@ -114,7 +114,7 @@ func (t *Task) GetJob(ctx context.Context) (*Job, error) {
 	if err != nil {
 		return nil, err
 	}
-	jobFullName := strings.TrimLeft(u.Path, "/job")
+	jobFullName := strings.TrimPrefix(u.Path, "/job")
 	return t.Jenkins.GetJob(ctx, jobFullName)
 }
 
