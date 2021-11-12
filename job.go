@@ -24,6 +24,7 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type Job struct {
@@ -423,14 +424,19 @@ func (j *Job) HasQueuedBuild() {
 func (j *Job) InvokeSimple(ctx context.Context, params map[string]string) (int64, error) {
 	// Allow concurrent builds
 	// Can try this
-	//isQueued, err := j.IsQueued(ctx)
-	//if err != nil {
-	//	return 0, err
-	//}
-	//if isQueued {
-	//	Error.Printf("%s is already running", j.GetName())
-	//	return 0, nil
-	//}
+	isQueued, err := j.IsQueued(ctx)
+	if err != nil {
+		return 0, err
+	}
+
+	for isQueued {
+		Error.Printf("%s is already running", j.GetName())
+		time.Sleep(time.Second)
+		isQueued, err = j.IsQueued(ctx)
+		if err != nil {
+			return 0, err
+		}
+	}
 
 	endpoint := "/build"
 	parameters, err := j.GetParameters(ctx)
